@@ -1,0 +1,14 @@
+export default {
+  async email(message, env, ctx) {
+    const allowList = ${jsonencode([for addr in allowed_email : "${addr}"])};
+    if (allowList.indexOf(message.headers.get("to")) == -1) {
+      message.setReject("Mailbox not found or address not allowed");
+    } else {
+      //await message.forward("inbox@corp");
+      const to = await message.to;
+      const subject = await message.headers.get("subject")
+      const msg = await message.raw;
+      console.log([to, subject, msg]);
+    }
+  }
+}
