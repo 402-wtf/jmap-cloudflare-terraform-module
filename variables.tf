@@ -4,11 +4,6 @@ variable "base_name" {
   type = string
 }
 
-variable "account_id" {
-  description = "The Cloudflare Account ID to apply resources to"
-  type = string
-}
-
 variable "primary_domain" {
   description = "The primary domain used for worker deployment. This should be an FQDN that already is added as a DNS zone."
   type = string
